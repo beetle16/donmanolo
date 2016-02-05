@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Ressourcendateien">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Libs">
+      <UniqueIdentifier>{a2c0ae21-0e05-4ae3-bc7a-11b4403b31a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DonManolo">
+      <UniqueIdentifier>{ef33b236-01f2-4a06-a920-d5083fd5569d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DonManolo\Level">
+      <UniqueIdentifier>{b8f146ec-1b87-48ea-bcaa-1112518915e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DonManolo\Common">
+      <UniqueIdentifier>{b0f5ff35-4f54-4dbf-90bc-bc71670694b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DonManolo\Entities">
+      <UniqueIdentifier>{94f51571-b2a3-4938-ab4e-cb5583d26c9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine">
+      <UniqueIdentifier>{acf913e6-348f-4f34-ba09-ee949980534e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DonManolo\Entities\Behaviors">
+      <UniqueIdentifier>{d16c4dc8-46a9-4c3f-a8a2-c0631e7f214f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input">
+      <UniqueIdentifier>{b886c8b5-18e1-424d-bf9b-b72e49e09f58}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DonManolo.cpp" />
+    <ClCompile Include="GameWindow.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Screen.cpp" />
+    <ClCompile Include="Window.cpp" />
+    <ClCompile Include="CMWC.cpp" />
+    <ClCompile Include="Level.cpp">
+      <Filter>DonManolo\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelLoader.cpp">
+      <Filter>DonManolo\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>DonManolo\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>DonManolo\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>DonManolo\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleAnimationController.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>DonManolo\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Keyboard.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\SDL2.dll">
+      <Filter>Libs</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DonManolo.h" />
+    <ClInclude Include="Exception.h" />
+    <ClInclude Include="GameWindow.h" />
+    <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="Screen.h" />
+    <ClInclude Include="Window.h" />
+    <ClInclude Include="CMWC.h" />
+    <ClInclude Include="Enums.h" />
+    <ClInclude Include="Level.h">
+      <Filter>DonManolo\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelLoader.h">
+      <Filter>DonManolo\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseTypes.h">
+      <Filter>DonManolo\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>DonManolo\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>DonManolo\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>DonManolo\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleAnimationController.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Behavior.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>DonManolo\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseBehavior.h">
+      <Filter>DonManolo\Entities\Behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerBaseBehavior.h">
+      <Filter>DonManolo\Entities\Behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="Keyboard.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
