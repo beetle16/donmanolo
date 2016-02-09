@@ -23,6 +23,8 @@ namespace Engine
 			_entity.SetPosY(_entity.GetFinalPosY());
 		}
 
+		virtual ~BaseBehavior() {}
+
 	};
 
 }

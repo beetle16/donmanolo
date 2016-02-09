@@ -103,6 +103,7 @@ namespace Engine
 			}
 		}
 
+		virtual ~PlayerBaseBehavior() {}
 	};
 
 }

@@ -13,6 +13,7 @@ namespace Engine
 	{
 	public:
 		virtual void Tick(Game::DonManolo& game, Game::Level& level) = 0;
+		virtual ~IBehavior() {}
 	};
 
 }

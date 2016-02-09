@@ -92,9 +92,6 @@ namespace Game
 		ScreenLevelBase* screenLevelBase = new ScreenLevelBase(this, LevelLoader::Create(buf));
 
 		_currentScreen = screenLevelBase;
-
-		//this->GetLevel().GetEntity(ENTITYID_PLAYER1).AddBehavior
-
 	}
 
 	void DonManolo::Tick()
