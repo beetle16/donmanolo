@@ -43,22 +43,22 @@ namespace Game
 
 		inline void SetTileId(int x, int y, ETileId tileId, unsigned char orientation = 0)
 		{
-			ETileId oldTile =  _map[y*_width+x].GetTileId();
+			ETileId oldTile = _map[y*_width + x].GetTileId();
 
 			// when the tile to set is actually a eatable object, decrement eatable pills counter.
-			if( oldTile == TILEID_BLUE_PILL || oldTile == TILEID_RED_PILL || oldTile == TILEID_EATABLE_WALL )
+			if (oldTile == TILEID_BLUE_PILL || oldTile == TILEID_RED_PILL || oldTile == TILEID_EATABLE_WALL)
 			{
 				_pillsLeft--;
 			}
 
-			_map[y*_width+x].SetTileId(tileId, orientation);
+			_map[y*_width + x].SetTileId(tileId, orientation);
 
 			// if new tile is eatable object, increase eatable pills counter.
-			if( tileId == TILEID_BLUE_PILL || tileId == TILEID_RED_PILL || tileId == TILEID_EATABLE_WALL)
+			if (tileId == TILEID_BLUE_PILL || tileId == TILEID_RED_PILL || tileId == TILEID_EATABLE_WALL)
 			{
 				_pillsLeft++;
 			}
-		}	
+		}
 
 		inline Entity& GetEntity(EEntityId entityId) const
 		{
@@ -70,6 +70,10 @@ namespace Game
 		inline int GetEntityCount() const 
 		{
 			return _entities.size();
+		}
+
+		inline int GetPillsLeft() const {
+			return _pillsLeft;
 		}
 	};
 

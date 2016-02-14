@@ -85,7 +85,7 @@ namespace Game
 	ScreenLevelBase::ScreenLevelBase(DonManolo* parent, Level* level) : ScreenBase(parent)
 	{
 		_level = level;
-		_ready = 0;
+		_ready = false;
 	}
 
 	Level& ScreenLevelBase::GetLevel() const
@@ -103,6 +103,13 @@ namespace Game
 	void ScreenLevelBase::Render()
 	{
 		SDL_RenderClear(_parent->GetRenderer());
+
+		// when not raedy, the "Get Ready , Level X" should be drawn, instead of the level.
+		if (!_ready) {
+
+			//TODO.
+			return;
+		}
 
 		//TODO render level / GetReady
 		
@@ -175,6 +182,14 @@ namespace Game
 	
 	void ScreenLevelBase::Tick()
 	{
+		if (!_ready) {
+			if (_parent->GetKeyboard()->KeyPressed(SDL_SCANCODE_SPACE)) {
+				_ready = true;
+				
+			}
+			return;
+		}
+
 		//controls
 
 		//TODO handle number of players etc.
@@ -189,6 +204,11 @@ namespace Game
 			}
 			_level->GetEntity((EEntityId)index).Tick(*_parent, *_level);
 			
+		}
+
+		if (_level->GetPillsLeft() == 0) {
+			_parent->EnterNextLevel();
+			return;
 		}
 
 		//_level->GetEntity(ENTITYID_PLAYER2).Tick(*_parent, *_level);
