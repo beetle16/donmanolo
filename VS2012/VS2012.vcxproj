@@ -99,6 +99,7 @@
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="LevelLoader.cpp" />
     <ClCompile Include="Monster.cpp" />
+    <ClCompile Include="MonsterBehavior.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Screen.cpp" />
@@ -122,6 +123,7 @@
     <ClInclude Include="Level.h" />
     <ClInclude Include="LevelLoader.h" />
     <ClInclude Include="Monster.h" />
+    <ClInclude Include="MonsterBehavior.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerBaseBehavior.h" />
     <ClInclude Include="Renderer.h" />
@@ -132,6 +134,9 @@
     <ClInclude Include="BaseBehavior.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="Exception.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="TODO.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

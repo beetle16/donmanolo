@@ -1,0 +1,27 @@
+TODOs:
+
+* Font Library & Texts
+
+* Bonus Effects á la 
+	+/- speed
+	red pills (moster can get eaten)
+	Score
+	slug item (move through walls)
+	score multiplier
+	warp
+	deathmatch item
+
+
+* Monster AI
+	Follow Path Back
+	Random Movements
+	Regeneration
+
+* Game
+	Collision Monster/Player and interaction
+	Random Mechanics
+	Triggered Mechanics
+	Doors/Teleporters
+	Lives
+
+	Sound Effects

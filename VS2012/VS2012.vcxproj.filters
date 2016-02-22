@@ -29,6 +29,9 @@
     <Filter Include="Input">
       <UniqueIdentifier>{b886c8b5-18e1-424d-bf9b-b72e49e09f58}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ReadMe">
+      <UniqueIdentifier>{ec1cd2a2-0a5f-4cc1-bc8f-ff2cf14b61d0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DonManolo.cpp" />
@@ -63,6 +66,9 @@
     </ClCompile>
     <ClCompile Include="Keyboard.cpp">
       <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterBehavior.cpp">
+      <Filter>DonManolo\Entities\Behaviors</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -118,5 +124,13 @@
     <ClInclude Include="Keyboard.h">
       <Filter>Input</Filter>
     </ClInclude>
+    <ClInclude Include="MonsterBehavior.h">
+      <Filter>DonManolo\Entities\Behaviors</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="TODO.txt">
+      <Filter>ReadMe</Filter>
+    </Text>
   </ItemGroup>
 </Project>
