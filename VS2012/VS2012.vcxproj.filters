@@ -127,6 +127,9 @@
     <ClInclude Include="MonsterBehavior.h">
       <Filter>DonManolo\Entities\Behaviors</Filter>
     </ClInclude>
+    <ClInclude Include="TickCounter.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="TODO.txt">

@@ -2,10 +2,18 @@
 #define __MONSTERBEHAVIOR_H__
 
 #include "BaseBehavior.h"
+#include "TickCounter.h"
 
 namespace Engine
 {
 	
+	enum EMonsterBehaviorState : char 
+	{
+		MONSTERBEHAVIORSTATE_WAITING,
+		MONSTERBEHAVIORSTATE_NORMAL,
+		MONSTERBEHAVIORSTATE_RETURNING,
+	};
+
 	// defines behavior of a monster.
 	class MonsterBehavior : public BaseBehavior
 	{
@@ -14,6 +22,8 @@ namespace Engine
 		int _homeX;
 		int _homeY;
 
+		EMonsterBehaviorState _behaviorState;
+		TickCounter _waitCounter;
 		// build home-going-map
 		// short[levX][levY]
 		// TODO doors etc.

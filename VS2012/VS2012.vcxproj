@@ -130,6 +130,7 @@
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="SimpleAnimationController.h" />
+    <ClInclude Include="TickCounter.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="BaseBehavior.h" />
     <ClInclude Include="Window.h" />

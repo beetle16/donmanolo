@@ -3,6 +3,7 @@
 #include "BaseTypes.h"
 #include "CMWC.h"
 #include "PlayerBaseBehavior.h"
+#include "MonsterBehavior.h"
 
 namespace Game
 {
@@ -63,6 +64,11 @@ namespace Game
 		Entity& p1 = result->GetEntity(EEntityId::ENTITYID_PLAYER1);
 		Entity& p2 = result->GetEntity(EEntityId::ENTITYID_PLAYER2);
 
+		Entity& m1 = result->GetEntity(EEntityId::ENTITYID_ENEMY1);
+		Entity& m2 = result->GetEntity(EEntityId::ENTITYID_ENEMY2);
+		Entity& m3 = result->GetEntity(EEntityId::ENTITYID_ENEMY3);
+		Entity& m4 = result->GetEntity(EEntityId::ENTITYID_ENEMY4);
+
 		std::map<EInputAction , int> p1map;
 		p1map[INPUTACTION_DOWN] = SDL_SCANCODE_DOWN;
 		p1map[INPUTACTION_UP] = SDL_SCANCODE_UP;
@@ -79,6 +85,11 @@ namespace Game
 
 		p1.AddBehavior(new Engine::PlayerBaseBehavior(p1, p1map));
 		p2.AddBehavior(new Engine::PlayerBaseBehavior(p2, p2map));
+
+		m1.AddBehavior(new Engine::MonsterBehavior(m1));
+		m2.AddBehavior(new Engine::MonsterBehavior(m2));
+		m3.AddBehavior(new Engine::MonsterBehavior(m3));
+		m4.AddBehavior(new Engine::MonsterBehavior(m4));
 
 		fclose(f);
 
