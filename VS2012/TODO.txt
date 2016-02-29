@@ -14,7 +14,7 @@ TODOs:
 
 * Monster AI
 	Follow Path Back
-	Random Movements
+OK	Random Movements
 	Regeneration
 
 * Game

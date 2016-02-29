@@ -32,6 +32,9 @@
     <Filter Include="ReadMe">
       <UniqueIdentifier>{ec1cd2a2-0a5f-4cc1-bc8f-ff2cf14b61d0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fonts">
+      <UniqueIdentifier>{5a4a7c44-a9a4-443d-b06f-c9f246550e60}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DonManolo.cpp" />
@@ -135,5 +138,10 @@
     <Text Include="TODO.txt">
       <Filter>ReadMe</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="..\broadway.ttf">
+      <Filter>Fonts</Filter>
+    </Font>
   </ItemGroup>
 </Project>
