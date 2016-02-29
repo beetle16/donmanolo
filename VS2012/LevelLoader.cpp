@@ -15,9 +15,9 @@ namespace Game
 		return result;
 	}
 
-	Level* LevelLoader::Create(char* filename)
+	Level* LevelLoader::Create(char* filename, int id)
 	{
-		Level* result = new Level(32,24);
+		Level* result = new Level(32,24, id);
 		FILE* f = fopen(filename, "r");
 
 		// load level map

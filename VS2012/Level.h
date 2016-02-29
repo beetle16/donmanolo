@@ -16,17 +16,20 @@ namespace Game
 		int _width;		// level width
 		int _height;	// level height
 
+		int _id; // level id
+
 		int _pillsLeft;	// determines how many pills are left to win.
 
 		Point<int> _startingPositions[6];	//default 6 entities ; 2 players + 4 monsters
 
 		std::vector<Entity*> _entities;		//TODO (live data)
 	public:
-		Level(int width=1, int height=1);
+		Level(int width=1, int height=1, int id=0);
 		~Level();
 
 		inline int GetWidth() { return _width; }
 		inline int GetHeight() { return _height; }
+		inline int GetId() { return _id; }
 
 		inline const Point<int>& GetStartingPosition(EEntityId entityId) { return _startingPositions[entityId]; }
 		inline void SetStartingPosition(EEntityId entityId, const Point<int>& position)

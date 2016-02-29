@@ -15,7 +15,7 @@ namespace Game
 		static Point<int> ReadPosition(FILE* fp); 
 	public:
 
-		static Level* Create(char* filename);
+		static Level* Create(char* filename, int id);
 	};
 }
 

@@ -6,10 +6,12 @@
 
 namespace Game
 {
-	Level::Level(int width, int height)
+	Level::Level(int width, int height, int id)
 	{
 		this->_width = width;
 		this->_height = height;
+		this->_id = id;
+
 		this->_pillsLeft = 0;
 
 		_map = new Tile[width*height]();

@@ -22,6 +22,11 @@ OK	Random Movements
 	Random Mechanics
 	Triggered Mechanics
 	Doors/Teleporters
-	Lives
+	Lives + Display
 
 	Sound Effects
+
+
+* Build / Resources
+	Resources that the program needs should be copied at the position where they belong.
+	Currently, DLLs (SDL, SDL_ttf and its dependencies + the font, images and levels (res/ folder) are copied manually; in vs the default working directory is correctly set.)

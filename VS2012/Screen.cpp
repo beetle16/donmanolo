@@ -1,5 +1,7 @@
 #include "Level.h"
 #include "Screen.h"
+#include <SDL.h>
+#include <SDL_ttf.h>
 
 
 //TODO
@@ -104,10 +106,50 @@ namespace Game
 	{
 		SDL_RenderClear(_parent->GetRenderer());
 
-		// when not raedy, the "Get Ready , Level X" should be drawn, instead of the level.
+		// when not ready, the "Get Ready , Level X" should be drawn, instead of the level.
 		if (!_ready) {
 
-			//TODO.
+			//TODO this is the most ineffective way to write text.
+			//TODO move non changing components out (in a separate font renderer?). Functions like centering could be there too.
+			TTF_Font* font = TTF_OpenFont("res/broadway.ttf", 27);
+
+			SDL_Color White = { 255, 255, 255 };  // this is the color in rgb format, maxing out all would give you the color white, and it will be your text's color
+			SDL_Color Black = { 0,0,0 };
+
+			int w;
+			int h;
+			SDL_GetWindowSize(_parent->GetWindow(), &w, &h);
+
+			char msg[32];
+			sprintf(msg, "Level %d", _parent->GetLevel().GetId());
+			{
+				SDL_Surface* surfaceMessage = TTF_RenderText_Shaded(font, "Get Ready!", White, Black); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
+				SDL_Texture* Message = SDL_CreateTextureFromSurface(_parent->GetRenderer(), surfaceMessage); //now you can convert it into a texture
+				SDL_Rect Message_rect; //create a rect
+				Message_rect.x = (w - surfaceMessage->w) >> 1;  //controls the rect's x coordinate 
+				Message_rect.y = ((h >> 1) - surfaceMessage->h); // controls the rect's y coordinte
+				Message_rect.w = surfaceMessage->w; // controls the width of the rect
+				Message_rect.h = surfaceMessage->h; // controls the height of the rect
+				SDL_RenderCopy(_parent->GetRenderer(), Message, NULL, &Message_rect); //you put the renderer's name first, the Message, the crop size(you can ignore this if you don't want to dabble with cropping), and the rect which is the size and coordinate of your texture
+				SDL_FreeSurface(surfaceMessage);
+				SDL_DestroyTexture(Message);
+			}
+			{
+				SDL_Surface* surfaceMessage = TTF_RenderText_Shaded(font, msg, White, Black); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
+				SDL_Texture* Message = SDL_CreateTextureFromSurface(_parent->GetRenderer(), surfaceMessage); //now you can convert it into a texture
+				SDL_Rect Message_rect; //create a rect
+				Message_rect.x = (w - surfaceMessage->w) >> 1;  //controls the rect's x coordinate 
+				Message_rect.y = (h >> 1); // controls the rect's y coordinte
+				Message_rect.w = surfaceMessage->w; // controls the width of the rect
+				Message_rect.h = surfaceMessage->h; // controls the height of the rect
+				SDL_RenderCopy(_parent->GetRenderer(), Message, NULL, &Message_rect); //you put the renderer's name first, the Message, the crop size(you can ignore this if you don't want to dabble with cropping), and the rect which is the size and coordinate of your texture
+				SDL_FreeSurface(surfaceMessage);
+				SDL_DestroyTexture(Message);
+			}
+			
+
+			TTF_CloseFont(font);
+
 			return;
 		}
 

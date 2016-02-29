@@ -7,6 +7,7 @@
 #include "Level.h"
 #include "BaseBehavior.h"
 #include "PlayerBaseBehavior.h"
+#include <SDL_ttf.h>
 
 namespace Game
 {
@@ -16,10 +17,18 @@ namespace Game
 		CMWC_init();
 		
 		
+		
 	}
 
 	void DonManolo::Initialize()
 	{
+		if (TTF_Init() != 0) {
+			// error
+			SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "TTF", TTF_GetError(), this->GetWindow());
+			
+			throw "SDL_TTF could not be initialized!";
+		}
+
 		//TODO hardcoded number of textures...
 		for(int i=0;i<35;i++)
 		{
@@ -37,6 +46,8 @@ namespace Game
 	{
 
 		delete _currentScreen;
+
+		TTF_Quit();
 	}
 
 
@@ -89,7 +100,7 @@ namespace Game
 		{
 			delete _currentScreen;
 		}
-		ScreenLevelBase* screenLevelBase = new ScreenLevelBase(this, LevelLoader::Create(buf));
+		ScreenLevelBase* screenLevelBase = new ScreenLevelBase(this, LevelLoader::Create(buf, _currentLevelId));
 
 		_currentScreen = screenLevelBase;
 	}
