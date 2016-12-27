@@ -18,15 +18,13 @@ namespace Engine
 
 		virtual void Tick(Game::DonManolo& game, Game::Level& level){
 			// TODO: move this code to smaller pieces
-			// TODO: move speed out to donManolo or a base rule object.
 			// TODO: move 25 to a const all throughout the program.
 			// TODO: change dir in-mid field (_offset != 0 ) (open, should i do that?)
 			
-			const int SPEED = 3;
 			Game::EDirection lastDirection = _entity.GetDirection();
 			const unsigned char* keyb = game.GetKeyboard()->GetState();
 
-			_entity.BaseMovement(SPEED);
+			_entity.BaseMovement(level.GetGameSpeed());
 			// character out of border (x-axis)
 			if( _entity.GetTilePosX() == -1 )
 			{

@@ -18,7 +18,17 @@ namespace Game
 
 		int _id; // level id
 
-		int _pillsLeft;	// determines how many pills are left to win.
+		// determines how many pills are left to win.
+		int _pillsLeft;	
+
+		// main speed of the player.
+		int _gameSpeed;
+
+		// main speed of the enemies.
+		int _enemySpeed;
+
+		// time while the red pill lasts. (in frames at 60 fps, so 16.67 ms per unit).
+		int _ghostedTime;
 
 		Point<int> _startingPositions[6];	//default 6 entities ; 2 players + 4 monsters
 
@@ -78,6 +88,15 @@ namespace Game
 		inline int GetPillsLeft() const {
 			return _pillsLeft;
 		}
+
+		inline int GetGameSpeed() const { return _gameSpeed; }
+		inline void SetGameSpeed(int speed) { _gameSpeed = speed; }
+
+		inline int GetEnemySpeed() const { return _enemySpeed; }
+		inline void SetEnemySpeed(int speed) { _enemySpeed = speed; }
+
+		inline int GetGhostedTime() const { return _ghostedTime; }
+		inline void SetGhostedTime(int time) { _ghostedTime = time; }
 	};
 
 

@@ -110,6 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\SDL2.dll" />
+    <None Include="TODO.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseTypes.h" />
@@ -135,9 +136,6 @@
     <ClInclude Include="BaseBehavior.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="Exception.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="TODO.txt" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="..\broadway.ttf" />

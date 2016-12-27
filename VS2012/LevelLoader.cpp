@@ -7,6 +7,40 @@
 
 namespace Game
 {
+	
+	void LevelLoader::ReadMap(Level* result, FILE* f)
+	{
+		// load level map
+		for (int y = 0; y < result->GetHeight(); y++)
+		{
+			for (int x = 0; x < result->GetWidth(); x++)
+			{
+				int m;
+				if (fscanf(f, "%d", &m) == 1)
+				{
+					if (m >= 0)
+					{
+						if ((ETileId)(m) == TILEID_WALL || (ETileId)(m) == TILEID_STRONG_WALL || (ETileId)(m) == TILEID_EATABLE_WALL)
+						{
+							result->SetTileId(x, y, (ETileId)(m), CMWC() % 4);
+						}
+						else
+						{
+							result->SetTileId(x, y, (ETileId)(m));
+						}
+					}
+				}
+				// read delimiter, omit at end of line
+				if (x != 31)
+				{
+					fscanf(f, ",");
+				}
+			}
+			fscanf(f, " ");	//newlines, whitespaces
+		}
+	}
+
+
 	Point<int> LevelLoader::ReadPosition(FILE* fp)
 	{
 		Point<int> result;
@@ -15,42 +49,17 @@ namespace Game
 		return result;
 	}
 
+
+
 	Level* LevelLoader::Create(char* filename, int id)
 	{
 		Level* result = new Level(32,24, id);
 		FILE* f = fopen(filename, "r");
 
-		// load level map
-		for(int y=0;y<result->GetHeight();y++)
-		{
-			for(int x=0;x<result->GetWidth();x++)
-			{
-				int m;
-				if( fscanf(f, "%d", &m) == 1)
-				{
-					if ( m >= 0)
-					{
-						if( (ETileId)(m) == TILEID_WALL || (ETileId)(m) == TILEID_STRONG_WALL || (ETileId)(m) == TILEID_EATABLE_WALL )
-						{
-							result->SetTileId(x,y,(ETileId)(m), CMWC()%4);
-						}
-						else
-						{
-							result->SetTileId(x,y,(ETileId)(m));
-						}
-					}
-				}
-				// read delimiter, omit at end of line
-				if( x != 31)
-				{
-					fscanf(f, ",");
-				}
-			}
-			fscanf(f, " ");	//newlines, whitespaces
-		}
+		ReadMap(result, f);
 
 		//read entity starting positions.
-		for(int i=0;i<6;i++)
+		for(int i = 0; i < 6; i++)
 		{
 			result->SetStartingPosition((EEntityId) i, ReadPosition(f));
 
@@ -58,6 +67,14 @@ namespace Game
 			Entity& entity = result->GetEntity((EEntityId)i);
 			entity.AddBehavior(new Engine::BaseBehavior(entity));
 		}
+
+		int gameSpeed;
+		int enemySpeed;
+		int ghostedTime;
+		fscanf(f, "%d,%d,%d", &gameSpeed, &enemySpeed, &ghostedTime);
+		result->SetGameSpeed(gameSpeed);
+		result->SetEnemySpeed(enemySpeed);
+		result->SetGhostedTime(ghostedTime);
 
 		// TODO: keymappings are hardcoded here...
 		// add special behaviors to entities.

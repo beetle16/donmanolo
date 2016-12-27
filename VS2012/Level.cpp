@@ -13,6 +13,9 @@ namespace Game
 		this->_id = id;
 
 		this->_pillsLeft = 0;
+		this->_gameSpeed = 3;
+		this->_enemySpeed = 3;
+		this->_ghostedTime = 600;
 
 		_map = new Tile[width*height]();
 

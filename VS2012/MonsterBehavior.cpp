@@ -27,14 +27,12 @@ namespace Engine
 		}
 
 		// TODO: move this code to smaller pieces
-		// TODO: move speed out to donManolo or a base rule object.
 		// TODO: move 25 to a const all throughout the program.
 		// TODO: change dir in-mid field (_offset != 0 ) (open, should i do that?)
 
-		const int SPEED = 3;
 		Game::EDirection lastDirection = _entity.GetDirection();
 
-		_entity.BaseMovement(SPEED);
+		_entity.BaseMovement(level.GetEnemySpeed());
 
 		// character out of border (x-axis)
 		if (_entity.GetTilePosX() == -1)
@@ -61,7 +59,7 @@ namespace Engine
 			//while (!level.DirectionWalkable(_entity, finalDir, true)) {
 			
 			bool accept = false;
-			//while (lastDirection == backDir) {
+			
 			for (int count = 0; count < 4; count++)
 			{
 				if (finalDir != backDir && level.DirectionWalkable(_entity, finalDir, true))
@@ -81,13 +79,7 @@ namespace Engine
 			if (!accept) {
 				finalDir = backDir;
 			}
-
-			//}
 			
-
-
-
-
 			// collision checks and flip left/right. Turn to new direction if possible.
 			//if (level.DirectionWalkable(_entity, finalDir, true))
 			{

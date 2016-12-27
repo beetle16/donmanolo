@@ -11,6 +11,8 @@ namespace Game
 
 	class LevelLoader
 	{
+	private:
+		static void ReadMap(Level* target, FILE* fp);
 	protected:
 		static Point<int> ReadPosition(FILE* fp); 
 	public:

@@ -78,6 +78,9 @@
     <None Include="..\SDL2.dll">
       <Filter>Libs</Filter>
     </None>
+    <None Include="TODO.txt">
+      <Filter>ReadMe</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DonManolo.h" />
@@ -133,11 +136,6 @@
     <ClInclude Include="TickCounter.h">
       <Filter>Engine</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="TODO.txt">
-      <Filter>ReadMe</Filter>
-    </Text>
   </ItemGroup>
   <ItemGroup>
     <Font Include="..\broadway.ttf">
