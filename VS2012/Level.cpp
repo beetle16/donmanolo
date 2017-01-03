@@ -22,7 +22,8 @@ namespace Game
 		// TODO move this out of level. This is game specific (app specific).
 		// pregenerate entites with its default textures.
 		ETexture textures[] = {TEXTURE_ALPHA_PLAYER1, TEXTURE_ALPHA_PLAYER2, 
-			TEXTURE_ALPHA_ENEMY_PURPLE, TEXTURE_ALPHA_ENEMY_ORANGE, TEXTURE_ALPHA_ENEMY_BLUE, TEXTURE_ALPHA_ENEMY_RED};
+			TEXTURE_ALPHA_ENEMY_PURPLE, TEXTURE_ALPHA_ENEMY_ORANGE, TEXTURE_ALPHA_ENEMY_BLUE, TEXTURE_ALPHA_ENEMY_RED,
+			TEXTURE_ALPHA_ENEMY_PURPLE_G, TEXTURE_ALPHA_ENEMY_ORANGE_G, TEXTURE_ALPHA_ENEMY_BLUE_G, TEXTURE_ALPHA_ENEMY_RED_G};
 
 		ETexture player[2][4] ={ {TEXTURE_ALPHA_PLAYER1, TEXTURE_ALPHA_PLAYER1b, TEXTURE_ALPHA_PLAYER1c, TEXTURE_ALPHA_PLAYER1b},
 						{TEXTURE_ALPHA_PLAYER2, TEXTURE_ALPHA_PLAYER2b, TEXTURE_ALPHA_PLAYER2c, TEXTURE_ALPHA_PLAYER2b} };
@@ -44,7 +45,7 @@ namespace Game
 			}
 			else
 			{
-				Monster* e = new Monster(textures[i]);
+				Monster* e = new Monster(textures[i], textures[i+4]);
 				_entities.push_back(e);
 			}
 		}

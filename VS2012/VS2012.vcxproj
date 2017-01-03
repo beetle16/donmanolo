@@ -110,6 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\SDL2.dll" />
+    <None Include="GhostedTickCounter.h" />
     <None Include="TODO.txt" />
   </ItemGroup>
   <ItemGroup>

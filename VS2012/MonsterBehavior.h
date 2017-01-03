@@ -2,6 +2,7 @@
 #define __MONSTERBEHAVIOR_H__
 
 #include "BaseBehavior.h"
+#include "Monster.h"
 #include "TickCounter.h"
 
 namespace Engine
@@ -18,6 +19,9 @@ namespace Engine
 	class MonsterBehavior : public BaseBehavior
 	{
 	protected:
+		// casted entity
+		Game::Monster& _monster;
+
 		//regeneration returning point
 		int _homeX;
 		int _homeY;

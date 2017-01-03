@@ -2,8 +2,10 @@
 
 namespace Game
 {
-	Monster::Monster(ETexture texture) : Entity(texture)
+	Monster::Monster(ETexture baseTexture, ETexture ghostedTexture) : Entity(baseTexture)
 	{
+		_baseTexture = baseTexture;
+		_ghostedTexture = ghostedTexture;
 	}
 
 	Monster::~Monster()

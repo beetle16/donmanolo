@@ -3,6 +3,7 @@
 
 #include "BaseBehavior.h"
 #include "BaseTypes.h"
+#include "Monster.h"
 
 namespace Engine
 {
@@ -42,6 +43,23 @@ namespace Engine
 			{
 				level.SetTileId(_entity.GetTilePosX(), _entity.GetTilePosY(), Game::ETileId::TILEID_NONE);
 			}
+
+			// mechanics for red pill.
+			if (tile == Game::ETileId::TILEID_RED_PILL)
+			{
+				Game::EEntityId monsters[] = { Game::EEntityId::ENTITYID_ENEMY1 , Game::EEntityId::ENTITYID_ENEMY2 , Game::EEntityId::ENTITYID_ENEMY3 , Game::EEntityId::ENTITYID_ENEMY4 };
+				// TODO repeat for all monsters
+				for (int monsterIndex = 0; monsterIndex < 4; monsterIndex++)
+				{
+					Game::Monster* monster = dynamic_cast<Game::Monster*>(&level.GetEntity(monsters[monsterIndex]));
+					if (monster != NULL)
+					{
+						monster->GetGhostedTickCounter().SetTarget(level.GetGhostedTime());
+						monster->GetGhostedTickCounter().Reset();
+					}
+				}
+			}
+
 
 			// user input movement (only processed when standing on field)
 			if( _entity.GetDirection() == Game::EDirection::EDIRECTION_NONE)
