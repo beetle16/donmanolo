@@ -8,11 +8,25 @@ namespace Game
 
 	Player::Player(ETexture texture) : Entity(texture)
 	{
-		
+		_score = 0;
 	}
 
 	Player::~Player()
 	{
+	}
+
+	int Player::GetScore() 
+	{
+		return _score;
+	}
+	void Player::IncreaseScore(int amount) {
+		_score += amount;
+	}
+
+
+	int Player::GetLives()
+	{
+		return _lives;
 	}
 
 	//void Player::Tick(DonManolo& game, Level& level)

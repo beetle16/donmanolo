@@ -107,10 +107,10 @@
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="main.cpp" />
+	<ClCompile Include="FontManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\SDL2.dll" />
-    <None Include="GhostedTickCounter.h" />
     <None Include="TODO.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -137,6 +137,8 @@
     <ClInclude Include="BaseBehavior.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="Exception.h" />
+	<ClInclude Include="FontManager.h" />
+    <ClInclude Include="GhostedTickCounter.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="..\broadway.ttf" />

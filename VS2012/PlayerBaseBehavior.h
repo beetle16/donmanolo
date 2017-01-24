@@ -4,6 +4,7 @@
 #include "BaseBehavior.h"
 #include "BaseTypes.h"
 #include "Monster.h"
+#include "Player.h"
 
 namespace Engine
 {
@@ -41,6 +42,8 @@ namespace Engine
 			Game::ETileId tile = level.GetTileId(_entity.GetTilePosX(),_entity.GetTilePosY());
 			if(tile == Game::ETileId::TILEID_BLUE_PILL || tile == Game::ETileId::TILEID_RED_PILL || tile == Game::ETileId::TILEID_EATABLE_WALL)
 			{
+				Game::Player* p = dynamic_cast<Game::Player*>(&_entity);
+				p->IncreaseScore(10);
 				level.SetTileId(_entity.GetTilePosX(), _entity.GetTilePosY(), Game::ETileId::TILEID_NONE);
 			}
 

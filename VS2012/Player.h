@@ -8,6 +8,9 @@
 
 namespace Game
 {
+	// TODO: current problem: player objects are currently created/destroyed along with level.
+	// Scores and other information in here will be lost after each level change.
+
 	class Player : public Entity
 	{
 	protected:
@@ -17,6 +20,12 @@ namespace Game
 	public:
 		Player(ETexture texture);
 		virtual ~Player();
+
+
+		int GetScore();
+		void IncreaseScore(int amount);
+
+		int GetLives();
 	};
 }
 

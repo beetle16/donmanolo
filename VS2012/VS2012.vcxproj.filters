@@ -45,6 +45,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="Window.cpp" />
+    <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="CMWC.cpp" />
     <ClCompile Include="Level.cpp">
       <Filter>DonManolo\Level</Filter>
@@ -84,19 +85,20 @@
     <None Include="TODO.txt">
       <Filter>ReadMe</Filter>
     </None>
-    <None Include="GhostedTickCounter.h">
-      <Filter>DonManolo\Entities\Counters</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DonManolo.h" />
     <ClInclude Include="Exception.h" />
     <ClInclude Include="GameWindow.h" />
     <ClInclude Include="ResourceManager.h" />
+	<ClInclude Include="FontManager.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="CMWC.h" />
     <ClInclude Include="Enums.h" />
+	<ClInclude Include="GhostedTickCounter.h">
+      <Filter>DonManolo\Entities\Counters</Filter>
+    </ClInclude>
     <ClInclude Include="Level.h">
       <Filter>DonManolo\Level</Filter>
     </ClInclude>

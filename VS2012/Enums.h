@@ -62,6 +62,12 @@ namespace Game
 		TEXTURE_ALPHA_ENEMY_EYES        = 34,
 	};
 
+	// this enum can be used to access fonts by name.
+	enum EFont : signed char
+	{
+		FONT_BROAD_27 = 0,
+	};
+
 	// this enum assigns names to tile ids.
 	enum ETileId : signed char
 	{

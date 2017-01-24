@@ -35,6 +35,9 @@ namespace Game
 			_texture_manager.AddResource(*(new TextureResourceItem(textureList[i], GetRenderer())));		
 		}
 
+		_font_manager.AddFont("res/broadway.ttf", 27);
+
+
 		_numPlayers = 0;
 		_currentScreen = new ScreenMenu(this);
 		_currentLevelId = 0;
@@ -47,6 +50,9 @@ namespace Game
 
 		delete _currentScreen;
 
+		TTF_CloseFont(_font_manager.GetFont(FONT_BROAD_27));
+		
+
 		TTF_Quit();
 	}
 
@@ -55,6 +61,12 @@ namespace Game
 	{
 		return _texture_manager;
 	}
+
+	const FontManager& DonManolo::GetFontManager() const
+	{
+		return _font_manager;
+	}
+
 
 	Level& DonManolo::GetLevel() const
 	{
@@ -72,7 +84,7 @@ namespace Game
 		}
 	}
 
-	//WARNING: See EnterNextLeve(), which is called here.
+	//WARNING: See EnterNextLevel(), which is called here.
 	void DonManolo::StartNewGame(int players, bool shuffleMode)
 	{
 		// TODO parameter handling

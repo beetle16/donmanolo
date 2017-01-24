@@ -1,10 +1,16 @@
 TODOs:
 
+* Open Issues
+	Player gets currently created along level. This leads to lost information (score, lives)
+	   on each level change.
+	Resetting a level in case the player(s) died and have to try again.
+	   In this case, only the starting positions should be resetted.
+
 * Font Library & Texts
 
 * Bonus Effects á la 
 	+/- speed
-	red pills (moster can get eaten)
+P	red pills (moster can get eaten)
 	Score
 	slug item (move through walls)
 	score multiplier

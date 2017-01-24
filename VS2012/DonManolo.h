@@ -3,6 +3,7 @@
 
 #include "Window.h"
 #include "ResourceManager.h"
+#include "FontManager.h"
 #include <map>
 #include "Enums.h"
 
@@ -24,6 +25,7 @@ namespace Game
 
 	protected:
 		ResourceManager<SDL_Texture> _texture_manager;
+		FontManager _font_manager;
 		virtual void Initialize();
 	public:
 		
@@ -31,6 +33,7 @@ namespace Game
 		virtual ~DonManolo();
 		
 		const ResourceManager<SDL_Texture>& GetTextureManager() const;
+		const FontManager& GetFontManager() const;
 		Level& GetLevel() const;
 
 		inline int GetNumPlayers() { return _numPlayers; }
