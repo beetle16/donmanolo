@@ -38,6 +38,9 @@
     <Filter Include="DonManolo\Entities\Counters">
       <UniqueIdentifier>{347e3d12-da37-4af9-b8b6-53468f2a1b30}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DonManolo\Entities\Factory">
+      <UniqueIdentifier>{3536c89f-7f69-4b05-aed8-4d852177849d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DonManolo.cpp" />
@@ -77,6 +80,9 @@
     <ClCompile Include="MonsterBehavior.cpp">
       <Filter>DonManolo\Entities\Behaviors</Filter>
     </ClCompile>
+	 <ClCompile Include="PlayerFactory.cpp">
+      <Filter>DonManolo\Entities\Factory</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\SDL2.dll">
@@ -85,18 +91,20 @@
     <None Include="TODO.txt">
       <Filter>ReadMe</Filter>
     </None>
+  
+   
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DonManolo.h" />
     <ClInclude Include="Exception.h" />
     <ClInclude Include="GameWindow.h" />
     <ClInclude Include="ResourceManager.h" />
-	<ClInclude Include="FontManager.h" />
+    <ClInclude Include="FontManager.h" />
     <ClInclude Include="Screen.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="CMWC.h" />
     <ClInclude Include="Enums.h" />
-	<ClInclude Include="GhostedTickCounter.h">
+    <ClInclude Include="GhostedTickCounter.h">
       <Filter>DonManolo\Entities\Counters</Filter>
     </ClInclude>
     <ClInclude Include="Level.h">
@@ -143,6 +151,9 @@
     </ClInclude>
     <ClInclude Include="TickCounter.h">
       <Filter>Engine</Filter>
+    </ClInclude>
+	<ClInclude Include="PlayerFactory.h">
+      <Filter>DonManolo\Entities\Factory</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

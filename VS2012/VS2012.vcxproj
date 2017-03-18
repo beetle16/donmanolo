@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -26,7 +26,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v110</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -107,7 +107,8 @@
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="main.cpp" />
-	<ClCompile Include="FontManager.cpp" />
+    <ClCompile Include="FontManager.cpp" />
+	<ClCompile Include="PlayerFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\SDL2.dll" />
@@ -137,8 +138,9 @@
     <ClInclude Include="BaseBehavior.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="Exception.h" />
-	<ClInclude Include="FontManager.h" />
+    <ClInclude Include="FontManager.h" />
     <ClInclude Include="GhostedTickCounter.h" />
+	<ClInclude Include="PlayerFactory.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="..\broadway.ttf" />

@@ -35,6 +35,7 @@ namespace Game
 
 		inline void SetTilePos(int posX, int posY) {_tilePosX = posX; _tilePosY = posY;}
 		inline void SetDirection(EDirection direction) { _direction = direction;}
+		inline void SetOffset(int offsetX, int offsetY) { _offsetX = offsetX; _offsetY = offsetY; }
 
 		inline int GetTilePosX() { return _tilePosX; }
 		inline int GetTilePosY() { return _tilePosY; }
@@ -45,6 +46,7 @@ namespace Game
 		inline EDirection GetDirection() const { return _direction;}
 
 		inline void AddBehavior(Engine::IBehavior* behavior) { _behaviors.push_back(behavior); }
+
 
 		virtual void Tick(Game::DonManolo& game, Game::Level& level);
 

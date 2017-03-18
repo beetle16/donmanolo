@@ -51,9 +51,9 @@ namespace Game
 
 
 
-	Level* LevelLoader::Create(char* filename, int id)
+	Level* LevelLoader::Create(std::vector<Player*>& players, char* filename, int id)
 	{
-		Level* result = new Level(32,24, id);
+		Level* result = new Level(players, 32,24, id);
 		FILE* f = fopen(filename, "r");
 
 		ReadMap(result, f);
@@ -63,9 +63,12 @@ namespace Game
 		{
 			result->SetStartingPosition((EEntityId) i, ReadPosition(f));
 
-			// adds the basic behavior (move on a field until reached) to entity
-			Entity& entity = result->GetEntity((EEntityId)i);
-			entity.AddBehavior(new Engine::BaseBehavior(entity));
+			if (i >= 2) 
+			{
+				// adds the basic behavior (move on a field until reached) to entity
+				Entity& entity = result->GetEntity((EEntityId)i);
+				entity.AddBehavior(new Engine::BaseBehavior(entity));
+			}
 		}
 
 		int gameSpeed;
@@ -86,22 +89,7 @@ namespace Game
 		Entity& m3 = result->GetEntity(EEntityId::ENTITYID_ENEMY3);
 		Entity& m4 = result->GetEntity(EEntityId::ENTITYID_ENEMY4);
 
-		std::map<EInputAction , int> p1map;
-		p1map[INPUTACTION_DOWN] = SDL_SCANCODE_DOWN;
-		p1map[INPUTACTION_UP] = SDL_SCANCODE_UP;
-		p1map[INPUTACTION_LEFT] = SDL_SCANCODE_LEFT;
-		p1map[INPUTACTION_RIGHT] = SDL_SCANCODE_RIGHT;
-		p1map[INPUTACTION_FIRE] = SDL_SCANCODE_RCTRL;
 
-		std::map<EInputAction , int> p2map;
-		p2map[INPUTACTION_DOWN] = SDL_SCANCODE_S;
-		p2map[INPUTACTION_UP] = SDL_SCANCODE_W;
-		p2map[INPUTACTION_LEFT] = SDL_SCANCODE_A;
-		p2map[INPUTACTION_RIGHT] = SDL_SCANCODE_D;
-		p2map[INPUTACTION_FIRE] = SDL_SCANCODE_LCTRL;
-
-		p1.AddBehavior(new Engine::PlayerBaseBehavior(p1, p1map));
-		p2.AddBehavior(new Engine::PlayerBaseBehavior(p2, p2map));
 
 		m1.AddBehavior(new Engine::MonsterBehavior(m1));
 		m2.AddBehavior(new Engine::MonsterBehavior(m2));

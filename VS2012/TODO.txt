@@ -1,7 +1,7 @@
 TODOs:
 
 * Open Issues
-	Player gets currently created along level. This leads to lost information (score, lives)
+OK	Player gets currently created along level. This leads to lost information (score, lives)
 	   on each level change.
 	Resetting a level in case the player(s) died and have to try again.
 	   In this case, only the starting positions should be resetted.

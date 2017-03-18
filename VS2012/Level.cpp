@@ -3,10 +3,11 @@
 #include "Player.h"
 #include "Monster.h"
 #include "SimpleAnimationController.h"
+#include <vector>
 
 namespace Game
 {
-	Level::Level(int width, int height, int id)
+	Level::Level(std::vector<Player*>& players, int width, int height, int id )
 	{
 		this->_width = width;
 		this->_height = height;
@@ -24,24 +25,12 @@ namespace Game
 		ETexture textures[] = {TEXTURE_ALPHA_PLAYER1, TEXTURE_ALPHA_PLAYER2, 
 			TEXTURE_ALPHA_ENEMY_PURPLE, TEXTURE_ALPHA_ENEMY_ORANGE, TEXTURE_ALPHA_ENEMY_BLUE, TEXTURE_ALPHA_ENEMY_RED,
 			TEXTURE_ALPHA_ENEMY_PURPLE_G, TEXTURE_ALPHA_ENEMY_ORANGE_G, TEXTURE_ALPHA_ENEMY_BLUE_G, TEXTURE_ALPHA_ENEMY_RED_G};
-
-		ETexture player[2][4] ={ {TEXTURE_ALPHA_PLAYER1, TEXTURE_ALPHA_PLAYER1b, TEXTURE_ALPHA_PLAYER1c, TEXTURE_ALPHA_PLAYER1b},
-						{TEXTURE_ALPHA_PLAYER2, TEXTURE_ALPHA_PLAYER2b, TEXTURE_ALPHA_PLAYER2c, TEXTURE_ALPHA_PLAYER2b} };
 		
 		for(int i=0;i<6;i++)
 		{
 			if( i < 2 )
 			{
-				Player* e = new Player(textures[i]);
-
-				Engine::SimpleAnimationController* controller1 = new Engine::SimpleAnimationController(*e, 4);
-				controller1->AddTexture(player[i][0]);
-				controller1->AddTexture(player[i][1]);
-				controller1->AddTexture(player[i][2]);
-				controller1->AddTexture(player[i][3]);
-				e->SetAnimationController(controller1);
-
-				_entities.push_back(e);
+				_entities.push_back(players[i]);
 			}
 			else
 			{
@@ -57,7 +46,11 @@ namespace Game
 
 		for(unsigned int i=0;i<_entities.size();i++)
 		{
-			delete _entities[i];
+			if (i >= 2)
+			{
+
+				delete _entities[i];
+			}
 		}
 		_entities.clear();
 	}

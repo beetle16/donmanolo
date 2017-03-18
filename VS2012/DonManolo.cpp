@@ -7,7 +7,9 @@
 #include "Level.h"
 #include "BaseBehavior.h"
 #include "PlayerBaseBehavior.h"
+#include "PlayerFactory.h"
 #include <SDL_ttf.h>
+
 
 namespace Game
 {
@@ -15,9 +17,6 @@ namespace Game
 	DonManolo::DonManolo() : Application::Window("DonManolo", 1024, 768)
 	{
 		CMWC_init();
-		
-		
-		
 	}
 
 	void DonManolo::Initialize()
@@ -41,18 +40,19 @@ namespace Game
 		_numPlayers = 0;
 		_currentScreen = new ScreenMenu(this);
 		_currentLevelId = 0;
-	
-
 	}
 
 	DonManolo::~DonManolo()
 	{
+		for (int i = 0; i < _players.size(); i++)
+		{
+			delete _players[i];
+		}
+		_players.clear();
 
 		delete _currentScreen;
 
 		TTF_CloseFont(_font_manager.GetFont(FONT_BROAD_27));
-		
-
 		TTF_Quit();
 	}
 
@@ -74,8 +74,6 @@ namespace Game
 		ScreenLevelBase* level = dynamic_cast<ScreenLevelBase*>(_currentScreen);
 		if( level != NULL )
 		{
-			
-
 			return level->GetLevel();
 		}
 		else
@@ -89,10 +87,39 @@ namespace Game
 	{
 		// TODO parameter handling
 
-		// TODO  --  get ready screen
-		//       --  gaming screen
-
 		_numPlayers = players;
+
+		// initialize players;
+		// delete old players
+		for (int i = 0; i < _players.size(); i++)
+		{
+			delete _players[i];
+		}
+		_players.clear();
+
+		_players.push_back(PlayerFactory::Create(ENTITYID_PLAYER1));
+		_players.push_back(PlayerFactory::Create(ENTITYID_PLAYER2));
+
+		_players[0]->AddBehavior(new Engine::BaseBehavior(*_players[0]));
+		_players[1]->AddBehavior(new Engine::BaseBehavior(*_players[1]));
+
+		std::map<EInputAction, int> p1map;
+		p1map[INPUTACTION_DOWN] = SDL_SCANCODE_DOWN;
+		p1map[INPUTACTION_UP] = SDL_SCANCODE_UP;
+		p1map[INPUTACTION_LEFT] = SDL_SCANCODE_LEFT;
+		p1map[INPUTACTION_RIGHT] = SDL_SCANCODE_RIGHT;
+		p1map[INPUTACTION_FIRE] = SDL_SCANCODE_RCTRL;
+
+		std::map<EInputAction, int> p2map;
+		p2map[INPUTACTION_DOWN] = SDL_SCANCODE_S;
+		p2map[INPUTACTION_UP] = SDL_SCANCODE_W;
+		p2map[INPUTACTION_LEFT] = SDL_SCANCODE_A;
+		p2map[INPUTACTION_RIGHT] = SDL_SCANCODE_D;
+		p2map[INPUTACTION_FIRE] = SDL_SCANCODE_LCTRL;
+
+		_players[0]->AddBehavior(new Engine::PlayerBaseBehavior(*_players[0], p1map));
+		_players[1]->AddBehavior(new Engine::PlayerBaseBehavior(*_players[1], p2map));
+
 		_currentLevelId = 0;
 		EnterNextLevel();
 	}
@@ -104,7 +131,6 @@ namespace Game
 		
 		_currentLevelId +=1;
 
-
 		char buf[256];
 		sprintf(buf, "res/lvl/lev%d.txt", ((_currentLevelId-1) % 62)+1);
 		
@@ -112,7 +138,11 @@ namespace Game
 		{
 			delete _currentScreen;
 		}
-		ScreenLevelBase* screenLevelBase = new ScreenLevelBase(this, LevelLoader::Create(buf, _currentLevelId));
+		_players[0]->SetOffset(0, 0);
+		_players[0]->SetDirection(EDIRECTION_NONE);
+		_players[1]->SetOffset(0, 0);
+		_players[1]->SetDirection(EDIRECTION_NONE);
+		ScreenLevelBase* screenLevelBase = new ScreenLevelBase(this, LevelLoader::Create(_players, buf, _currentLevelId));
 
 		_currentScreen = screenLevelBase;
 	}

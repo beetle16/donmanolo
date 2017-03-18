@@ -17,7 +17,7 @@ namespace Game
 		static Point<int> ReadPosition(FILE* fp); 
 	public:
 
-		static Level* Create(char* filename, int id);
+		static Level* Create(std::vector<Player*>& players, char* filename, int id);
 	};
 }
 

@@ -5,6 +5,7 @@
 #include "BaseTypes.h"
 #include "Tile.h"
 #include "Entity.h"
+#include "Player.h"
 
 namespace Game
 {
@@ -34,7 +35,7 @@ namespace Game
 
 		std::vector<Entity*> _entities;		//TODO (live data)
 	public:
-		Level(int width=1, int height=1, int id=0);
+		Level(std::vector<Player*>& players, int width=1, int height=1, int id=0);
 		~Level();
 
 		inline int GetWidth() { return _width; }

@@ -4,13 +4,14 @@
 #include "Window.h"
 #include "ResourceManager.h"
 #include "FontManager.h"
+#include "Player.h"
 #include <map>
 #include "Enums.h"
+#include <vector>
 
 namespace Game
 {
 	class Level;
-
 	class ScreenBase;
 
 	class DonManolo : public Application::Window
@@ -21,7 +22,7 @@ namespace Game
 		int _currentLevelId;
 		int _numPlayers;
 
-	
+		std::vector<Player*> _players;
 
 	protected:
 		ResourceManager<SDL_Texture> _texture_manager;
