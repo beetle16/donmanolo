@@ -17,7 +17,7 @@ namespace Game
 	};
 
 	// this enum can be used to access textures by name.
-	enum ETexture : signed char {
+	enum class ETexture : signed char {
 		TEXTURE_NONE					=-1,
 		TEXTURE_BACKGROUND				=0,
 		TEXTURE_WALL					=1,
@@ -63,13 +63,13 @@ namespace Game
 	};
 
 	// this enum can be used to access fonts by name.
-	enum EFont : signed char
+	enum class EFont : signed char
 	{
 		FONT_BROAD_27 = 0,
 	};
 
 	// this enum assigns names to tile ids.
-	enum ETileId : signed char
+	enum class ETileId : signed char
 	{
 		TILEID_NONE = -1,
 		TILEID_WALL = 0,
@@ -82,7 +82,7 @@ namespace Game
 	};
 
 	// defines 4 orientations of the cartesian coordinate system.
-	enum EOrientation : unsigned char
+	enum class EOrientation : unsigned char
 	{
 		ORIENTATION_0,
 		ORIENTATION_90,
@@ -91,7 +91,7 @@ namespace Game
 	};
 
 	// identifies entities by ids.
-	enum EEntityId : unsigned char
+	enum class EEntityId : unsigned char
 	{
 		ENTITYID_PLAYER1=0,
 		ENTITYID_PLAYER2=1,
@@ -101,7 +101,7 @@ namespace Game
 		ENTITYID_ENEMY4=5,
 	};
 
-	enum EInputAction
+	enum class EInputAction
 	{
 		INPUTACTION_UP=0,
 		INPUTACTION_DOWN=1,

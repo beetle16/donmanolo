@@ -4,7 +4,7 @@
 
 namespace Game
 {
-	Entity::Entity(ETexture texture) : _direction(EDIRECTION_NONE)
+	Entity::Entity(ETexture texture) : _direction(EDirection::EDIRECTION_NONE)
 	{
 		_texture = texture;
 		_horizontalFlip = false;
@@ -32,10 +32,10 @@ namespace Game
 	void Entity::BaseMovement(int speed)
 	{
 					// auto move if direction is set.
-			if( _direction != Game::EDIRECTION_NONE )
+			if( _direction != Game::EDirection::EDIRECTION_NONE )
 			{
-				_offsetX += Game::dirX[_direction] * speed;
-				_offsetY += Game::dirY[_direction] * speed;
+				_offsetX += Game::dirX[(int)_direction] * speed;
+				_offsetY += Game::dirY[(int)_direction] * speed;
 				if( _animationController != NULL )
 				{
 					_animationController->AnimationStep();
@@ -46,15 +46,15 @@ namespace Game
 			if( abs(_offsetX) >= 25 )
 			{
 				_offsetX = 0;
-				_tilePosX +=  dirX[_direction];
-				_direction = EDIRECTION_NONE;
+				_tilePosX +=  dirX[(int)_direction];
+				_direction = EDirection::EDIRECTION_NONE;
 			
 			}
 			if( abs(_offsetY) >= 25 )
 			{
 				_offsetY = 0;
-				_tilePosY +=  dirY[_direction];
-				_direction = EDIRECTION_NONE;
+				_tilePosY +=  dirY[(int)_direction];
+				_direction = EDirection::EDIRECTION_NONE;
 			}
 
 		

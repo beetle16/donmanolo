@@ -72,11 +72,11 @@ namespace Engine
 				Game::EDirection vertical = Game::EDirection::EDIRECTION_NONE;
 				Game::EDirection finalDir = Game::EDirection::EDIRECTION_NONE;
 				// check keys and lastDirection to determine next direction / or stop.
-				if( keyb[_mapping[Game::INPUTACTION_LEFT]] == 1 ) { horizontal = Game::EDirection::EDIRECTION_WEST; }
-				else if( keyb[_mapping[Game::INPUTACTION_RIGHT]] == 1) { horizontal = Game::EDirection::EDIRECTION_EAST; }
+				if (keyb[_mapping[Game::EInputAction::INPUTACTION_LEFT]] == 1) { horizontal = Game::EDirection::EDIRECTION_WEST; }
+				else if (keyb[_mapping[Game::EInputAction::INPUTACTION_RIGHT]] == 1) { horizontal = Game::EDirection::EDIRECTION_EAST; }
 
-				if( keyb[_mapping[Game::INPUTACTION_UP]] == 1 ) { vertical = Game::EDirection::EDIRECTION_NORTH;}
-				else if( keyb[_mapping[Game::INPUTACTION_DOWN]] == 1) { vertical = Game::EDirection::EDIRECTION_SOUTH; }
+				if( keyb[_mapping[Game::EInputAction::INPUTACTION_UP]] == 1 ) { vertical = Game::EDirection::EDIRECTION_NORTH;}
+				else if( keyb[_mapping[Game::EInputAction::INPUTACTION_DOWN]] == 1) { vertical = Game::EDirection::EDIRECTION_SOUTH; }
 
 				if( horizontal != Game::EDirection::EDIRECTION_NONE && vertical != Game::EDirection::EDIRECTION_NONE) 
 				{

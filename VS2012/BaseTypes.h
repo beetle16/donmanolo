@@ -16,7 +16,7 @@ namespace Game
 	static const int dirX[4] = { 0, 1,0,-1};
 	static const int dirY[4] = {-1, 0,1, 0};
 
-	enum EDirection : signed char
+	enum class EDirection : signed char
 	{
 		EDIRECTION_NONE = -1,
 		EDIRECTION_NORTH = 0,

@@ -20,7 +20,7 @@ namespace Game
 				{
 					if (m >= 0)
 					{
-						if ((ETileId)(m) == TILEID_WALL || (ETileId)(m) == TILEID_STRONG_WALL || (ETileId)(m) == TILEID_EATABLE_WALL)
+						if ((ETileId)(m) == ETileId::TILEID_WALL || (ETileId)(m) == ETileId::TILEID_STRONG_WALL || (ETileId)(m) == ETileId::TILEID_EATABLE_WALL)
 						{
 							result->SetTileId(x, y, (ETileId)(m), CMWC() % 4);
 						}

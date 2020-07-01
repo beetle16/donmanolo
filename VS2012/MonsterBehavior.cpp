@@ -63,7 +63,7 @@ namespace Engine
 		// user input movement (only processed when standing on field)
 		if (_monster.GetDirection() == Game::EDirection::EDIRECTION_NONE)
 		{
-			Game::EDirection backDir = (Game::EDirection) ((lastDirection + 2) % 4);
+			Game::EDirection backDir = (Game::EDirection) (((int)lastDirection + 2) % 4);
 			Game::EDirection finalDir = (Game::EDirection) (CMWC() % 4);
 
 			
@@ -83,7 +83,7 @@ namespace Engine
 				else 
 				{
 					// NOT accept
-					finalDir = (Game::EDirection) ((finalDir+1)%4);
+					finalDir = (Game::EDirection) (((int)finalDir+1)%4);
 				}
 
 

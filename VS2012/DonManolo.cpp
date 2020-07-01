@@ -52,7 +52,7 @@ namespace Game
 
 		delete _currentScreen;
 
-		TTF_CloseFont(_font_manager.GetFont(FONT_BROAD_27));
+		TTF_CloseFont(_font_manager.GetFont((int)EFont::FONT_BROAD_27));
 		TTF_Quit();
 	}
 
@@ -97,25 +97,25 @@ namespace Game
 		}
 		_players.clear();
 
-		_players.push_back(PlayerFactory::Create(ENTITYID_PLAYER1));
-		_players.push_back(PlayerFactory::Create(ENTITYID_PLAYER2));
+		_players.push_back(PlayerFactory::Create(EEntityId::ENTITYID_PLAYER1));
+		_players.push_back(PlayerFactory::Create(EEntityId::ENTITYID_PLAYER2));
 
 		_players[0]->AddBehavior(new Engine::BaseBehavior(*_players[0]));
 		_players[1]->AddBehavior(new Engine::BaseBehavior(*_players[1]));
 
 		std::map<EInputAction, int> p1map;
-		p1map[INPUTACTION_DOWN] = SDL_SCANCODE_DOWN;
-		p1map[INPUTACTION_UP] = SDL_SCANCODE_UP;
-		p1map[INPUTACTION_LEFT] = SDL_SCANCODE_LEFT;
-		p1map[INPUTACTION_RIGHT] = SDL_SCANCODE_RIGHT;
-		p1map[INPUTACTION_FIRE] = SDL_SCANCODE_RCTRL;
+		p1map[EInputAction::INPUTACTION_DOWN] = SDL_SCANCODE_DOWN;
+		p1map[EInputAction::INPUTACTION_UP] = SDL_SCANCODE_UP;
+		p1map[EInputAction::INPUTACTION_LEFT] = SDL_SCANCODE_LEFT;
+		p1map[EInputAction::INPUTACTION_RIGHT] = SDL_SCANCODE_RIGHT;
+		p1map[EInputAction::INPUTACTION_FIRE] = SDL_SCANCODE_RCTRL;
 
 		std::map<EInputAction, int> p2map;
-		p2map[INPUTACTION_DOWN] = SDL_SCANCODE_S;
-		p2map[INPUTACTION_UP] = SDL_SCANCODE_W;
-		p2map[INPUTACTION_LEFT] = SDL_SCANCODE_A;
-		p2map[INPUTACTION_RIGHT] = SDL_SCANCODE_D;
-		p2map[INPUTACTION_FIRE] = SDL_SCANCODE_LCTRL;
+		p2map[EInputAction::INPUTACTION_DOWN] = SDL_SCANCODE_S;
+		p2map[EInputAction::INPUTACTION_UP] = SDL_SCANCODE_W;
+		p2map[EInputAction::INPUTACTION_LEFT] = SDL_SCANCODE_A;
+		p2map[EInputAction::INPUTACTION_RIGHT] = SDL_SCANCODE_D;
+		p2map[EInputAction::INPUTACTION_FIRE] = SDL_SCANCODE_LCTRL;
 
 		_players[0]->AddBehavior(new Engine::PlayerBaseBehavior(*_players[0], p1map));
 		_players[1]->AddBehavior(new Engine::PlayerBaseBehavior(*_players[1], p2map));
@@ -139,9 +139,9 @@ namespace Game
 			delete _currentScreen;
 		}
 		_players[0]->SetOffset(0, 0);
-		_players[0]->SetDirection(EDIRECTION_NONE);
+		_players[0]->SetDirection(EDirection::EDIRECTION_NONE);
 		_players[1]->SetOffset(0, 0);
-		_players[1]->SetDirection(EDIRECTION_NONE);
+		_players[1]->SetDirection(EDirection::EDIRECTION_NONE);
 		ScreenLevelBase* screenLevelBase = new ScreenLevelBase(this, LevelLoader::Create(_players, buf, _currentLevelId));
 
 		_currentScreen = screenLevelBase;

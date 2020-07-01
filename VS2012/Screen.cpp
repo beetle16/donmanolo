@@ -49,11 +49,11 @@ namespace Game
 		SDL_RenderClear(_parent->GetRenderer());
 		
 		//TODO optimization
-		SDL_RenderCopy(_parent->GetRenderer(), (SDL_Texture*) &_parent->GetTextureManager().GetResource(TEXTURE_BACKGROUND), NULL, &_background_rect);
+		SDL_RenderCopy(_parent->GetRenderer(), (SDL_Texture*) &_parent->GetTextureManager().GetResource((int)ETexture::TEXTURE_BACKGROUND), NULL, &_background_rect);
 
 		_cursor_pos.y = CURSOR_Y[_cursor_pos_index];
 
-		SDL_RenderCopy(_parent->GetRenderer(), (SDL_Texture*) &_parent->GetTextureManager().GetResource(TEXTURE_ALPHA_PLAYER1), NULL, &_cursor_pos);
+		SDL_RenderCopy(_parent->GetRenderer(), (SDL_Texture*) &_parent->GetTextureManager().GetResource((int)ETexture::TEXTURE_ALPHA_PLAYER1), NULL, &_cursor_pos);
 	}
 
 	void ScreenMenu::Tick()
@@ -110,7 +110,7 @@ namespace Game
 		// when not ready, the "Get Ready , Level X" should be drawn, instead of the level.
 		if (!_ready) {
 
-			TTF_Font* font = _parent->GetFontManager().GetFont(FONT_BROAD_27);
+			TTF_Font* font = _parent->GetFontManager().GetFont((int)EFont::FONT_BROAD_27);
 
 
 			SDL_Color White = { 255, 255, 255 };  // this is the color in rgb format, maxing out all would give you the color white, and it will be your text's color
@@ -151,7 +151,7 @@ namespace Game
 		}
 		
 		// render player score.
-		TTF_Font* font = _parent->GetFontManager().GetFont(FONT_BROAD_27);
+		TTF_Font* font = _parent->GetFontManager().GetFont((int)EFont::FONT_BROAD_27);
 
 		//Game::Player a;
 		
@@ -159,7 +159,7 @@ namespace Game
 		SDL_Color White = { 255, 255, 255 };  // this is the color in rgb format, maxing out all would give you the color white, and it will be your text's color
 		SDL_Color Black = { 0,0,0 };
 		char msg[32];
-		sprintf(msg, "%07d", ((Game::Player&)_parent->GetLevel().GetEntity(ENTITYID_PLAYER1)).GetScore());
+		sprintf(msg, "%07d", ((Game::Player&)_parent->GetLevel().GetEntity(EEntityId::ENTITYID_PLAYER1)).GetScore());
 		{ 
 			SDL_Surface* surfaceMessage = TTF_RenderText_Shaded(font, msg, White, Black); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
 			SDL_Texture* Message = SDL_CreateTextureFromSurface(_parent->GetRenderer(), surfaceMessage); //now you can convert it into a texture
@@ -187,7 +187,7 @@ namespace Game
 				ETileId t = _level->GetTileId(x,y);
 				
 		
-				if( t != TEXTURE_NONE )
+				if( t != ETileId::TILEID_NONE )
 				{
 					//TODO optimize.
 					SDL_Rect r = {
@@ -197,13 +197,13 @@ namespace Game
 					SDL_Texture* current_texture;
 
 					//TODO lookuptable?
-					if( t != TILEID_EATABLE_WALL )
+					if( t != ETileId::TILEID_EATABLE_WALL )
 					{
-						current_texture = (SDL_Texture*) &_parent->GetTextureManager().GetResource(t+1);
+						current_texture = (SDL_Texture*) &_parent->GetTextureManager().GetResource((int)t+1);
 					}
 					else
 					{
-						current_texture = (SDL_Texture*) &_parent->GetTextureManager().GetResource(TEXTURE_WALL);
+						current_texture = (SDL_Texture*) &_parent->GetTextureManager().GetResource((int)ETexture::TEXTURE_WALL);
 					}
 					
 					//SDL_RenderCopy(_parent->GetRenderer(), current_texture, NULL, &r);
@@ -220,19 +220,19 @@ namespace Game
 				const Entity& entity = _level->GetEntity((EEntityId)i);
 
 				// leave second player if playing alone.
-				if (i == ENTITYID_PLAYER2 && _parent->GetNumPlayers() == 1) {
+				if (i == (int)EEntityId::ENTITYID_PLAYER2 && _parent->GetNumPlayers() == 1) {
 					continue;
 				}
 
 
 				//ETexture t = _level->GetEntity((EEntityId)i).GetTexture();
-				if( entity.GetTexture() != TEXTURE_NONE )
+				if( entity.GetTexture() != ETexture::TEXTURE_NONE )
 					{
 						//TODO optimize.
 						SDL_Rect r = {
 							112+entity.Sprite::GetPosX(),88+entity.Sprite::GetPosY(),25,25
 						};
-						SDL_Texture* current_texture = (SDL_Texture*) &_parent->GetTextureManager().GetResource(entity.GetTexture());
+						SDL_Texture* current_texture = (SDL_Texture*) &_parent->GetTextureManager().GetResource((int)entity.GetTexture());
 						SDL_RenderCopyEx(_parent->GetRenderer(), current_texture, NULL, &r,0.0,NULL, 
 							entity.IsHorizontalFlipped() ? SDL_RendererFlip::SDL_FLIP_HORIZONTAL : SDL_RendererFlip::SDL_FLIP_NONE);
 					}
@@ -260,7 +260,7 @@ namespace Game
 		for (int index = 0; index < entityCount; index++)
 		{
 			// when single player, omit second player out.
-			if (index == ENTITYID_PLAYER2 && _parent->GetNumPlayers() == 1)
+			if (index == (int)EEntityId::ENTITYID_PLAYER2 && _parent->GetNumPlayers() == 1)
 			{
 				continue;
 			}

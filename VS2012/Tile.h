@@ -13,7 +13,7 @@ namespace Game
 		ETileId _tileId;
 		unsigned char _orientation;
 	public:
-		Tile(ETileId tileId = TILEID_NONE);
+		Tile(ETileId tileId = ETileId::TILEID_NONE);
 
 		inline ETileId GetTileId()
 		{

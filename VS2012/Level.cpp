@@ -22,9 +22,9 @@ namespace Game
 
 		// TODO move this out of level. This is game specific (app specific).
 		// pregenerate entites with its default textures.
-		ETexture textures[] = {TEXTURE_ALPHA_PLAYER1, TEXTURE_ALPHA_PLAYER2, 
-			TEXTURE_ALPHA_ENEMY_PURPLE, TEXTURE_ALPHA_ENEMY_ORANGE, TEXTURE_ALPHA_ENEMY_BLUE, TEXTURE_ALPHA_ENEMY_RED,
-			TEXTURE_ALPHA_ENEMY_PURPLE_G, TEXTURE_ALPHA_ENEMY_ORANGE_G, TEXTURE_ALPHA_ENEMY_BLUE_G, TEXTURE_ALPHA_ENEMY_RED_G};
+		ETexture textures[] = { ETexture::TEXTURE_ALPHA_PLAYER1, ETexture::TEXTURE_ALPHA_PLAYER2,
+			ETexture::TEXTURE_ALPHA_ENEMY_PURPLE, ETexture::TEXTURE_ALPHA_ENEMY_ORANGE, ETexture::TEXTURE_ALPHA_ENEMY_BLUE, ETexture::TEXTURE_ALPHA_ENEMY_RED,
+			ETexture::TEXTURE_ALPHA_ENEMY_PURPLE_G, ETexture::TEXTURE_ALPHA_ENEMY_ORANGE_G, ETexture::TEXTURE_ALPHA_ENEMY_BLUE_G, ETexture::TEXTURE_ALPHA_ENEMY_RED_G};
 		
 		for(int i=0;i<6;i++)
 		{
@@ -57,22 +57,22 @@ namespace Game
 
 	bool Level::DirectionWalkable(Entity& entity, EDirection direction, bool allowEatWall)
 	{
-		if( direction == EDIRECTION_NONE ) 
+		if( direction == EDirection::EDIRECTION_NONE )
 		{
 			return false;
 		}
 
-		int targetX = entity.GetTilePosX() + dirX[direction];
-		int targetY = entity.GetTilePosY() + dirY[direction];
+		int targetX = entity.GetTilePosX() + dirX[(int)direction];
+		int targetY = entity.GetTilePosY() + dirY[(int)direction];
 		if( targetX >= -1 && targetX <= GetWidth() && targetY >= 0 && targetY < GetHeight())
 		{
 			if( targetX >= 0 && targetX < GetWidth())
 			{
 				//fully in-bounds
 				ETileId targetFieldId = GetTile(targetX, targetY).GetTileId();
-				if( targetFieldId != TILEID_STRONG_WALL && targetFieldId != TILEID_WALL )
+				if( targetFieldId != ETileId::TILEID_STRONG_WALL && targetFieldId != ETileId::TILEID_WALL )
 				{
-					if( targetFieldId == TILEID_EATABLE_WALL )
+					if( targetFieldId == ETileId::TILEID_EATABLE_WALL )
 					{
 						return allowEatWall;
 					}else

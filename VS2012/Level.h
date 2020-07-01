@@ -42,13 +42,13 @@ namespace Game
 		inline int GetHeight() { return _height; }
 		inline int GetId() { return _id; }
 
-		inline const Point<int>& GetStartingPosition(EEntityId entityId) { return _startingPositions[entityId]; }
+		inline const Point<int>& GetStartingPosition(EEntityId entityId) { return _startingPositions[(int)entityId]; }
 		inline void SetStartingPosition(EEntityId entityId, const Point<int>& position)
 		{
-			_startingPositions[entityId]._X = position._X;
-			_startingPositions[entityId]._Y = position._Y;
+			_startingPositions[(int)entityId]._X = position._X;
+			_startingPositions[(int)entityId]._Y = position._Y;
 
-			_entities[entityId]->SetTilePos(position._X, position._Y);
+			_entities[(int)entityId]->SetTilePos(position._X, position._Y);
 		}
 
 		inline Tile& GetTile(int x, int y) { return _map[y*_width+x]; }
@@ -60,7 +60,7 @@ namespace Game
 			ETileId oldTile = _map[y*_width + x].GetTileId();
 
 			// when the tile to set is actually a eatable object, decrement eatable pills counter.
-			if (oldTile == TILEID_BLUE_PILL || oldTile == TILEID_RED_PILL || oldTile == TILEID_EATABLE_WALL)
+			if (oldTile == ETileId::TILEID_BLUE_PILL || oldTile == ETileId::TILEID_RED_PILL || oldTile == ETileId::TILEID_EATABLE_WALL)
 			{
 				_pillsLeft--;
 			}
@@ -68,7 +68,7 @@ namespace Game
 			_map[y*_width + x].SetTileId(tileId, orientation);
 
 			// if new tile is eatable object, increase eatable pills counter.
-			if (tileId == TILEID_BLUE_PILL || tileId == TILEID_RED_PILL || tileId == TILEID_EATABLE_WALL)
+			if (tileId == ETileId::TILEID_BLUE_PILL || tileId == ETileId::TILEID_RED_PILL || tileId == ETileId::TILEID_EATABLE_WALL)
 			{
 				_pillsLeft++;
 			}
@@ -76,7 +76,7 @@ namespace Game
 
 		inline Entity& GetEntity(EEntityId entityId) const
 		{
-			return *_entities[entityId];
+			return *_entities[(int)entityId];
 		}
 		
 		bool	DirectionWalkable(Entity& entity, EDirection direction, bool allowEatWall);
