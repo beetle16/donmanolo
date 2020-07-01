@@ -14,19 +14,19 @@
     <ProjectGuid>{B87E4FD0-1916-4CF2-9DDC-BF363E573045}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>VS2012</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -42,8 +42,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)SDL2-devel-2.0.3-VC\SDL2-2.0.3\include;$(SolutionDir)SDL2_ttf-devel-2.0.14-VC\SDL2_ttf-2.0.14\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)SDL2-devel-2.0.3-VC\SDL2-2.0.3\lib\x86;$(SolutionDir)SDL2_ttf-devel-2.0.14-VC\SDL2_ttf-2.0.14\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)SDL2-2.0.12\include;$(SolutionDir)SDL2_ttf-devel-2.0.14-VC\SDL2_ttf-2.0.14\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)SDL2-2.0.12\lib\x86;$(SolutionDir)SDL2_ttf-devel-2.0.14-VC\SDL2_ttf-2.0.14\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -108,7 +108,7 @@
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="FontManager.cpp" />
-	<ClCompile Include="PlayerFactory.cpp" />
+    <ClCompile Include="PlayerFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\SDL2.dll" />
@@ -140,7 +140,7 @@
     <ClInclude Include="Exception.h" />
     <ClInclude Include="FontManager.h" />
     <ClInclude Include="GhostedTickCounter.h" />
-	<ClInclude Include="PlayerFactory.h" />
+    <ClInclude Include="PlayerFactory.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="..\broadway.ttf" />
